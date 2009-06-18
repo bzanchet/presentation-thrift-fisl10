@@ -3,8 +3,7 @@ namespace php example
 
 enum MartialArt {
   AIKIDO    = 1,
-  KARATE   = 2,
-  OTHER    = 3
+  KARATE   = 2
 }
 
 struct UserProfile {
