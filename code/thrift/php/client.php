@@ -23,7 +23,11 @@ try {
   $user = $client->retrieve(1);
   var_dump($user);
 
-  $new_user = new example_UserProfile(array("uid" => '123', "name" => "Ralph Waldo Emerson", "style" => example_MartialArt::KARATE));
+  $new_user = new example_UserProfile(array(
+    "uid" => '123',
+    "name" => "Ralph Waldo Emerson",
+    "style" => example_MartialArt::KARATE
+  ));
   $client->store($new_user);
   $transport->close();
 
