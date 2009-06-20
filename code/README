@@ -1,0 +1,30 @@
+Running rest and php benchmarks:
+
+Inside ./rest directory: 
+
+1. Install apache, create a symlink for the php files
+
+$ sudo ln -s ./php-rest-service/ /var/www/service
+
+2. Run benchmarks with make
+
+$ make dynamic-benchmark
+$ make json-benchmark
+$ make static-benchmark
+$ make rest-benchmark
+
+3. That's all
+
+
+Running thrift benchmarks
+
+Inside ./thrift directory: 
+
+1. Start server
+
+$ make run-server &
+
+2. Run benchmarks
+
+$ make php-client-benchmark
+$ make python-client-benchmark

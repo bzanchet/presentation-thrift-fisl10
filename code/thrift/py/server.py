@@ -36,7 +36,8 @@ transport = TSocket.TServerSocket(9090)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
-server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
+#server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
+server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
 
 print 'Starting the server...'
 server.serve()
