@@ -1,6 +1,17 @@
+# benchmaks
+
+php-client-benchmark:
+	time php -f php/client.php
+
+python-client-benchmark:
+	time python py/client.py
+
+
+# plumbing
+
 clean:
 	rm -rf gen-py/ gen-php/ gen-java/ gen-rb/
-
+	
 run-server:
 	python py/server.py
 

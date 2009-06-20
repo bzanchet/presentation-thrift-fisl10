@@ -10,17 +10,14 @@ include_once $GLOBALS['THRIFT_ROOT'].'/Thrift.php';
 $GLOBALS['example_E_MartialArt'] = array(
   'AIKIDO' => 1,
   'KARATE' => 2,
-  'OTHER' => 3,
 );
 
 final class example_MartialArt {
   const AIKIDO = 1;
   const KARATE = 2;
-  const OTHER = 3;
   static public $__names = array(
     1 => 'AIKIDO',
     2 => 'KARATE',
-    3 => 'OTHER',
   );
 }
 

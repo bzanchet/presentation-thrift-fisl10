@@ -4,7 +4,6 @@ import sys, os.path
 sys.path.insert(0, "/usr/lib/python2.6/site-packages")
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'gen-py'))
 
-import time
 import example.UserStorage
 
 from example.ttypes import MartialArt
@@ -19,11 +18,16 @@ class UserStorageHandler:
         pass
 
     def store(self, user):
-        print "stored " + str(user)
+        #print "stored " + str(user)
+        pass
 
     def retrieve(self, id):
-        print "retrieved " + str(id)
-        return UserProfile(uid=id, name="Ralph Waldo Emerson", style=MartialArt.KARATE)
+        #print "retrieved " + str(id)
+        return UserProfile(
+            uid=id,
+            name="Ralph Waldo Emerson",
+            style=MartialArt.KARATE
+        )
 
       
 handler = UserStorageHandler()
@@ -32,12 +36,12 @@ transport = TSocket.TServerSocket(9090)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
-
-server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
-#server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
-#server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
-#server = TServer.TForkingServer(processor, transport, tfactory, pfactory)
+server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
 
 print 'Starting the server...'
 server.serve()
-print 'done.'
+
+#server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+#server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
+#server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
+#server = TServer.TForkingServer(processor, transport, tfactory, pfactory)

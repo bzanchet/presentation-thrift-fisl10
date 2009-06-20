@@ -17,7 +17,6 @@ except:
 class MartialArt(object):
   AIKIDO = 1
   KARATE = 2
-  OTHER = 3
 
 class UserProfile(object):
   """
