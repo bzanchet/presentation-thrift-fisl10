@@ -1,9 +1,9 @@
 # benchmaks
 
-php-client-benchmark:
+thrift-benchmark-php:
 	time php -f php/client.php
 
-python-client-benchmark:
+thrift-benchmark-py:
 	time python py/client.py
 
 
@@ -11,7 +11,7 @@ python-client-benchmark:
 
 clean:
 	rm -rf gen-py/ gen-php/ gen-java/ gen-rb/
-	
+
 run-server:
 	python py/server.py
 

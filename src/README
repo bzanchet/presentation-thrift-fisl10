@@ -2,16 +2,17 @@ Running rest and php benchmarks:
 
 Inside ./rest directory: 
 
-1. Install apache, create a symlink for the php files
+1. Install apache, create a symlink for the php files and make sure both http://localhost/service/static.html and http://localhost/service/dynamic.php are working
 
-$ sudo ln -s ./php-rest-service/ /var/www/service
+$ sudo ln -s ./htdocs/ /var/www/service
 
 2. Run benchmarks with make
 
 $ make dynamic-benchmark
 $ make json-benchmark
 $ make static-benchmark
-$ make rest-benchmark
+$ make rest-benchmark-php
+$ make rest-benchmark-py
 
 3. That's all
 
@@ -26,5 +27,5 @@ $ make run-server &
 
 2. Run benchmarks
 
-$ make php-client-benchmark
-$ make python-client-benchmark
+$ make thrift-benchmark-php
+$ make thrift-benchmark-py

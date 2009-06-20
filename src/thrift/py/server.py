@@ -13,6 +13,9 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
+from multiprocessing import freeze_support
+import TPreForkServer
+
 class UserStorageHandler:
     def __init__(self):
         pass
@@ -30,19 +33,21 @@ class UserStorageHandler:
         )
 
       
-handler = UserStorageHandler()
-processor = example.UserStorage.Processor(handler)
-transport = TSocket.TServerSocket(9090)
-tfactory = TTransport.TBufferedTransportFactory()
-pfactory = TBinaryProtocol.TBinaryProtocolFactory()
+if __name__ == '__main__':
+    freeze_support()
+    handler = UserStorageHandler()
+    processor = example.UserStorage.Processor(handler)
+    transport = TSocket.TServerSocket(9090)
+    tfactory = TTransport.TBufferedTransportFactory()
+    pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
-#server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
-server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
+    server = TPreForkServer.TPreForkServer(processor, transport, tfactory, pfactory)
 
-print 'Starting the server...'
-server.serve()
+    print 'Starting the server...'
+    freeze_support()
+    server.serve()
 
-#server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
-#server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
-#server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
-#server = TServer.TForkingServer(processor, transport, tfactory, pfactory)
+    #server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+    #server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
+    #server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
+    #server = TServer.TForkingServer(processor, transport, tfactory, pfactory)
